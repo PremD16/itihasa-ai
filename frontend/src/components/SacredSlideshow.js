@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { ChevronLeft, ChevronRight, Play, Pause } from "lucide-react";
+import { ChevronLeft, ChevronRight, Play, Pause, BookOpen } from "lucide-react";
 import { Button } from "./ui/button";
-import { Card, CardContent } from "./ui/card";
 
 const slides = [
   {
@@ -42,7 +41,7 @@ const slides = [
   }
 ];
 
-const SacredSlideshow = () => {
+const SacredSlideshow = ({ isTopSection = false }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isAutoPlay, setIsAutoPlay] = useState(true);
 
@@ -72,103 +71,114 @@ const SacredSlideshow = () => {
   };
 
   return (
-    <section className="py-16 px-4 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto">
-        {/* Section Header */}
-        <div className="text-center mb-12">
-          <h3 className="text-4xl font-bold text-amber-100 font-serif mb-4">
-            Visual Pilgrimage
-          </h3>
-          <p className="text-amber-200/70 text-lg max-w-2xl mx-auto">
-            Journey through sacred relics and timeless wisdom carved in stone, script, and spirit
-          </p>
-        </div>
+    <section className={`${isTopSection ? 'visual-invocation' : 'py-16 px-4'} relative overflow-hidden`}>
+      <div className="max-w-full mx-auto">
+        {/* Section Header - Only show if not top section */}
+        {!isTopSection && (
+          <div className="text-center mb-12">
+            <h3 className="text-4xl font-bold heading-text font-serif mb-4">
+              Visual Pilgrimage
+            </h3>
+            <p className="accent-text text-lg max-w-2xl mx-auto font-body">
+              Journey through sacred relics and timeless wisdom carved in stone, script, and spirit
+            </p>
+          </div>
+        )}
 
         {/* Slideshow Container */}
-        <Card className="sacred-glow bg-gradient-to-br from-amber-900/20 via-purple-900/30 to-indigo-900/40 backdrop-blur-sm border-copper-bronze/30 overflow-hidden">
-          <CardContent className="p-0 relative">
-            {/* Main Slide Display */}
-            <div className="relative h-96 md:h-[500px] overflow-hidden">
-              <div 
-                className="flex transition-transform duration-700 ease-in-out h-full"
-                style={{ transform: `translateX(-${currentSlide * 100}%)` }}
-              >
-                {slides.map((slide, index) => (
-                  <div 
-                    key={slide.id} 
-                    className="min-w-full h-full relative"
-                  >
-                    <img
-                      src={slide.image}
-                      alt={slide.title}
-                      className="w-full h-full object-cover slide-image"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent">
-                      <div className="absolute bottom-0 left-0 right-0 p-8">
-                        <h4 className="text-2xl md:text-3xl font-bold text-amber-100 font-serif mb-2">
+        <div className="relative overflow-hidden bg-gradient-to-br from-charcoal-indigo/90 via-deep-charcoal/80 to-charcoal-indigo/90 sacred-glow">
+          {/* Main Slide Display */}
+          <div className={`relative ${isTopSection ? 'h-[70vh] md:h-[80vh]' : 'h-96 md:h-[500px]'} overflow-hidden`}>
+            <div 
+              className="flex transition-transform duration-700 ease-in-out h-full"
+              style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+            >
+              {slides.map((slide, index) => (
+                <div 
+                  key={slide.id} 
+                  className="min-w-full h-full relative"
+                >
+                  <img
+                    src={slide.image}
+                    alt={slide.title}
+                    className="w-full h-full object-cover slide-image"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent">
+                    <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12">
+                      <div className="max-w-4xl mx-auto">
+                        <h4 className="text-3xl md:text-4xl font-bold high-contrast-text font-serif mb-4">
                           {slide.title}
                         </h4>
-                        <p className="text-lg md:text-xl text-amber-200 font-body italic leading-relaxed max-w-3xl">
+                        <p className="text-xl md:text-2xl high-contrast-text font-body italic leading-relaxed max-w-3xl mb-6">
                           {slide.caption}
                         </p>
+                        {isTopSection && (
+                          <Button
+                            className="learn-more-btn px-6 py-2 rounded-full font-medium"
+                            size="lg"
+                          >
+                            <BookOpen className="mr-2 h-5 w-5" />
+                            Learn More
+                          </Button>
+                        )}
                       </div>
                     </div>
                   </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Navigation Controls */}
-            <div className="absolute inset-y-0 left-4 flex items-center">
-              <Button
-                variant="ghost"
-                size="lg"
-                onClick={prevSlide}
-                className="bg-black/30 hover:bg-black/50 text-amber-300 hover:text-amber-100 backdrop-blur-sm"
-              >
-                <ChevronLeft className="h-8 w-8" />
-              </Button>
-            </div>
-            
-            <div className="absolute inset-y-0 right-4 flex items-center">
-              <Button
-                variant="ghost"
-                size="lg"
-                onClick={nextSlide}
-                className="bg-black/30 hover:bg-black/50 text-amber-300 hover:text-amber-100 backdrop-blur-sm"
-              >
-                <ChevronRight className="h-8 w-8" />
-              </Button>
-            </div>
-
-            {/* Auto-play Control */}
-            <div className="absolute top-4 right-4">
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={toggleAutoPlay}
-                className="bg-black/30 hover:bg-black/50 text-amber-300 hover:text-amber-100 backdrop-blur-sm"
-              >
-                {isAutoPlay ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4" />}
-              </Button>
-            </div>
-
-            {/* Slide Indicators */}
-            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
-              {slides.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => goToSlide(index)}
-                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                    index === currentSlide
-                      ? "bg-amber-400 scale-125"
-                      : "bg-amber-600/50 hover:bg-amber-500"
-                  }`}
-                />
+                </div>
               ))}
             </div>
-          </CardContent>
-        </Card>
+          </div>
+
+          {/* Navigation Controls */}
+          <div className="absolute inset-y-0 left-4 flex items-center z-10">
+            <Button
+              variant="ghost"
+              size="lg"
+              onClick={prevSlide}
+              className="bg-black/40 hover:bg-black/60 text-saffron-gold hover:text-ivory-sand backdrop-blur-sm border border-copper-bronze/30"
+            >
+              <ChevronLeft className="h-8 w-8" />
+            </Button>
+          </div>
+          
+          <div className="absolute inset-y-0 right-4 flex items-center z-10">
+            <Button
+              variant="ghost"
+              size="lg"
+              onClick={nextSlide}
+              className="bg-black/40 hover:bg-black/60 text-saffron-gold hover:text-ivory-sand backdrop-blur-sm border border-copper-bronze/30"
+            >
+              <ChevronRight className="h-8 w-8" />
+            </Button>
+          </div>
+
+          {/* Auto-play Control */}
+          <div className="absolute top-4 right-4 z-10">
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={toggleAutoPlay}
+              className="bg-black/40 hover:bg-black/60 text-saffron-gold hover:text-ivory-sand backdrop-blur-sm border border-copper-bronze/30"
+            >
+              {isAutoPlay ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4" />}
+            </Button>
+          </div>
+
+          {/* Slide Indicators */}
+          <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 z-10">
+            {slides.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => goToSlide(index)}
+                className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                  index === currentSlide
+                    ? "bg-saffron-gold scale-125 shadow-lg"
+                    : "bg-copper-bronze/50 hover:bg-copper-bronze"
+                }`}
+              />
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );

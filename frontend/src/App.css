@@ -4,15 +4,16 @@
   min-height: 100vh;
 }
 
-/* Sacred Color Palette Variables */
+/* Sacred Color Palette Variables - Updated for Better Readability */
 :root {
-  --cosmic-indigo: #1A1A2E;
-  --saffron-gold: #F4C430;
-  --amaranth-purple: #902F72;
+  --charcoal-indigo: #2C2C3A;
   --ivory-sand: #FDF6E3;
-  --flame-orange: #FB6C0E;
+  --saffron-gold: #F4C430;
   --copper-bronze: #C5B358;
+  --flame-orange: #FB6C0E;
   --mystic-teal: #3D9730;
+  --deep-charcoal: #1A1A24;
+  --soft-ivory: #F9F5E9;
 }
 
 /* Custom animations */
@@ -55,7 +56,7 @@ html {
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(26, 26, 46, 0.3);
+  background: rgba(44, 44, 58, 0.3);
   border-radius: 4px;
 }
 
@@ -156,18 +157,18 @@ button:hover {
 /* Sacred glow effects */
 .sacred-glow {
   box-shadow: 
-    0 0 20px rgba(244, 196, 48, 0.2),
+    0 0 20px rgba(244, 196, 48, 0.15),
     0 0 40px rgba(197, 179, 88, 0.1),
-    inset 0 0 20px rgba(253, 246, 227, 0.1);
+    inset 0 0 20px rgba(253, 246, 227, 0.05);
 }
 
 .cosmic-background {
   background: linear-gradient(135deg, 
-    var(--cosmic-indigo) 0%, 
-    #2A1A4A 25%, 
-    var(--amaranth-purple) 50%, 
-    #4A2A3A 75%, 
-    var(--cosmic-indigo) 100%);
+    var(--charcoal-indigo) 0%, 
+    #3A3A4A 25%, 
+    #2A2A3A 50%, 
+    #3A3A4A 75%, 
+    var(--charcoal-indigo) 100%);
 }
 
 /* Sanskrit glyph animations */
@@ -242,7 +243,7 @@ input:focus, select:focus, textarea:focus {
 }
 
 .prose h4 {
-  color: rgba(51, 65, 85, 0.9);
+  color: var(--copper-bronze);
   font-weight: 600;
   margin-top: 1.5rem;
   margin-bottom: 0.5rem;
@@ -260,7 +261,7 @@ input:focus, select:focus, textarea:focus {
 /* Card background texture effect */
 .card-texture {
   background-image: 
-    radial-gradient(circle at 1px 1px, rgba(244, 196, 48, 0.05) 1px, transparent 0);
+    radial-gradient(circle at 1px 1px, rgba(244, 196, 48, 0.03) 1px, transparent 0);
   background-size: 20px 20px;
 }
 
@@ -287,15 +288,62 @@ input:focus, select:focus, textarea:focus {
 .flame-button {
   background: linear-gradient(135deg, var(--flame-orange) 0%, #E55A00 100%);
   transition: all 0.3s ease;
+  color: var(--ivory-sand);
 }
 
 .flame-button:hover {
   background: linear-gradient(135deg, #E55A00 0%, var(--flame-orange) 100%);
   box-shadow: 0 10px 25px rgba(251, 108, 14, 0.4);
+  color: var(--ivory-sand);
 }
 
 /* Sacred borders */
 .sacred-border {
-  border: 2px solid var(--copper-bronze);
-  border-image: linear-gradient(45deg, var(--copper-bronze), var(--saffron-gold)) 1;
+  border: 2px solid var(--mystic-teal);
+  border-image: linear-gradient(45deg, var(--mystic-teal), var(--saffron-gold)) 1;
+}
+
+/* Visual invocation slideshow at top */
+.visual-invocation {
+  position: relative;
+  overflow: hidden;
+}
+
+.visual-invocation::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(180deg, transparent 0%, rgba(44, 44, 58, 0.3) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Improved contrast for readability */
+.high-contrast-text {
+  color: var(--ivory-sand);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.accent-text {
+  color: var(--copper-bronze);
+}
+
+.heading-text {
+  color: var(--saffron-gold);
+}
+
+/* Learn More button styling */
+.learn-more-btn {
+  background: rgba(61, 151, 48, 0.8);
+  color: var(--ivory-sand);
+  border: 1px solid var(--mystic-teal);
+  transition: all 0.3s ease;
+}
+
+.learn-more-btn:hover {
+  background: var(--mystic-teal);
+  transform: translateY(-1px);
 }
