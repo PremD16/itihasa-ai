@@ -16,6 +16,7 @@ const HomePage = () => {
   const [generatedContent, setGeneratedContent] = useState(null);
   const [isGenerating, setIsGenerating] = useState(false);
   const [audioEnabled, setAudioEnabled] = useState(false);
+  const [mantraAudioPlaying, setMantraAudioPlaying] = useState(false);
   const [availableSubtopics, setAvailableSubtopics] = useState([]);
   const { toast } = useToast();
 
