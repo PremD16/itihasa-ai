@@ -138,6 +138,51 @@ const HomePage = () => {
         </div>
       </section>
 
+      {/* Sacred Mantra Section */}
+      <section className="py-20 px-4 relative">
+        <div className="max-w-4xl mx-auto">
+          <Card className="mantra-fade-in bg-gradient-to-br from-amber-50/95 via-amber-100/90 to-indigo-100/95 backdrop-blur-sm border-amber-400/30 shadow-2xl card-texture">
+            <CardContent className="py-12 px-8 text-center relative">
+              {/* Audio Toggle Button */}
+              <div className="absolute top-6 right-6">
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={toggleMantraAudio}
+                  className="text-amber-700 hover:text-amber-900 hover:bg-amber-200/50 transition-all duration-300"
+                >
+                  {mantraAudioPlaying ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4" />}
+                </Button>
+              </div>
+
+              {/* Sanskrit Mantra */}
+              <div className="space-y-6">
+                <h2 className="text-5xl md:text-6xl font-bold text-amber-800 mantra-sanskrit font-devanagari leading-relaxed">
+                  ॐ इत्येतदक्षरं इदं सर्वम्
+                </h2>
+                
+                {/* Transliteration */}
+                <p className="text-2xl md:text-3xl text-slate-700 italic font-body font-medium leading-relaxed tracking-wide">
+                  Om ity etad akṣaram idam sarvam
+                </p>
+                
+                {/* Meaning */}
+                <p className="text-lg md:text-xl text-slate-600/80 font-body leading-relaxed max-w-2xl mx-auto">
+                  "Om is this whole universe."
+                </p>
+                
+                {/* Source Attribution */}
+                <div className="pt-4 border-t border-amber-300/30">
+                  <p className="text-sm text-amber-700/70 font-medium">
+                    — Mandukya Upanishad
+                  </p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+
       {/* Interactive Exploration Panel */}
       <section id="exploration-panel" className="py-20 px-4">
         <div className="max-w-6xl mx-auto">
