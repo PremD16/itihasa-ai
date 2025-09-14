@@ -94,7 +94,7 @@ const HomePage = () => {
       </div>
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center px-4 py-20">
+      <section className="relative min-h-[80vh] flex items-center justify-center px-4 py-20">
         <div className="max-w-4xl mx-auto text-center space-y-8">
           {/* Audio Toggle */}
           <div className="absolute top-8 right-8">
