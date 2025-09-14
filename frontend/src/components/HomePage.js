@@ -104,7 +104,7 @@ const HomePage = () => {
               <h1 className="text-6xl md:text-7xl font-bold bg-gradient-to-r from-amber-200 via-amber-400 to-amber-600 bg-clip-text text-transparent font-serif">
                 Itihasa-AI
               </h1>
-              <Temple className="h-12 w-12 text-amber-400" />
+              <Building className="h-12 w-12 text-amber-400" />
             </div>
             
             <h2 className="text-3xl md:text-4xl font-bold text-amber-100 font-serif leading-tight">
