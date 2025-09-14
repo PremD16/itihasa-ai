@@ -5,7 +5,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from ".
 import { Badge } from "./ui/badge";
 import { Separator } from "./ui/separator";
 import { ScrollArea } from "./ui/scroll-area";
-import { Copy, Download, Volume2, VolumeX, Scroll, Sparkles, Crown, Building } from "lucide-react";
+import { Copy, Download, Volume2, VolumeX, Scroll, Sparkles, Crown, Building, Play, Pause } from "lucide-react";
 import { useToast } from "../hooks/use-toast";
 import { mockData } from "../data/mock";
 
