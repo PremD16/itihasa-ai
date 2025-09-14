@@ -29,6 +29,10 @@
   font-family: 'Lora', serif;
 }
 
+.font-devanagari {
+  font-family: 'Noto Sans Devanagari', sans-serif;
+}
+
 /* Smooth scroll behavior */
 html {
   scroll-behavior: smooth;
