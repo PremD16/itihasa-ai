@@ -74,6 +74,15 @@ const HomePage = () => {
     document.getElementById('exploration-panel').scrollIntoView({ behavior: 'smooth' });
   };
 
+  const toggleMantraAudio = () => {
+    setMantraAudioPlaying(!mantraAudioPlaying);
+    // Note: Audio implementation would go here
+    toast({
+      title: mantraAudioPlaying ? "Om Chant Stopped" : "Om Chant Playing",
+      description: mantraAudioPlaying ? "Sacred sound paused" : "Let the ancient vibration guide you",
+    });
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-indigo-900 to-amber-900">
       {/* Floating Sanskrit Glyphs Background */}
